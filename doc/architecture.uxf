@@ -1,0 +1,25 @@
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><element><id>Relation</id><coordinates><x>380</x><y>40</y><w>100</w><h>40</h></coordinates><panel_attributes>lt=()-[Light]
+</panel_attributes><additional_attributes>80;20;20;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>460</x><y>160</y><w>100</w><h>120</h></coordinates><panel_attributes>EXNOR
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>380</x><y>190</y><w>110</w><h>30</h></coordinates><panel_attributes>lt=[OUT]-&gt;[IN]</panel_attributes><additional_attributes>20;10;80;10</additional_attributes></element><element><id>Relation</id><coordinates><x>100</x><y>50</y><w>210</w><h>130</h></coordinates><panel_attributes>lt=[OUT]-&gt;[IN]
+sig_pulse</panel_attributes><additional_attributes>20;110;80;110;80;10;180;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>630</x><y>160</y><w>100</w><h>170</h></coordinates><panel_attributes>Delay
+T_d = 1/(4*f_d)
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>540</x><y>210</y><w>120</w><h>30</h></coordinates><panel_attributes>lt=[OUT]-&gt;[IN]</panel_attributes><additional_attributes>20;10;90;10</additional_attributes></element><element><id>Relation</id><coordinates><x>130</x><y>150</y><w>360</w><h>130</h></coordinates><panel_attributes>lt=[IN]&lt;-
+sig_pulse</panel_attributes><additional_attributes>330;110;50;110;50;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>130</x><y>150</y><w>530</w><h>170</h></coordinates><panel_attributes>lt=[TRG]&lt;-
+sig_pulse</panel_attributes><additional_attributes>500;150;50;150;50;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>710</x><y>230</y><w>90</w><h>30</h></coordinates><panel_attributes>lt=[OUT]-&gt;[]</panel_attributes><additional_attributes>20;10;70;10</additional_attributes></element><element><id>Relation</id><coordinates><x>220</x><y>180</y><w>90</w><h>50</h></coordinates><panel_attributes>lt=[Light]-(
+</panel_attributes><additional_attributes>60;20;20;20</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>0</x><y>90</y><w>120</w><h>130</h></coordinates><panel_attributes>symbol=component
+Pulse
+--
+f_pattern</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>350</y><w>530</w><h>150</h></coordinates><panel_attributes>halign=left
+style=wordwrap
+*Process*
+
+The Pulse component produces a digital periodic pattern sig_pulse with the frequency f_pattern. 
+
+The Sender changes sig_pulse in a analog light signal which is received by the Receiver. The Receiver convert this to a digital signal. Together with the sig_pulse the EXNOR combined both with EXNOR boolean function. This is  evaluate after a delay which is triggered by begin of each timeslot of sig_pulse.
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>280</x><y>0</y><w>120</w><h>90</h></coordinates><panel_attributes>symbol=component
+Sender
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>280</x><y>140</y><w>120</w><h>100</h></coordinates><panel_attributes>symbol=component
+Receiver</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>190</x><y>50</y><w>350</w><h>170</h></coordinates><panel_attributes>lt=&lt;..</panel_attributes><additional_attributes>50;150;10;150;10;70;330;70;330;10;280;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>780</x><y>160</y><w>100</w><h>170</h></coordinates><panel_attributes>EVAL
+
+</panel_attributes><additional_attributes></additional_attributes></element></diagram>
