@@ -1,25 +1,226 @@
-<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><element><id>Relation</id><coordinates><x>380</x><y>40</y><w>100</w><h>40</h></coordinates><panel_attributes>lt=()-[Light]
-</panel_attributes><additional_attributes>80;20;20;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>460</x><y>160</y><w>100</w><h>120</h></coordinates><panel_attributes>EXNOR
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <help_text>// Uncomment the following line to change the fontsize and font:
+fontsize=10
+// fontfamily=SansSerif //possible: SansSerif,Serif,Monospaced
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>380</x><y>190</y><w>110</w><h>30</h></coordinates><panel_attributes>lt=[OUT]-&gt;[IN]</panel_attributes><additional_attributes>20;10;80;10</additional_attributes></element><element><id>Relation</id><coordinates><x>100</x><y>50</y><w>210</w><h>130</h></coordinates><panel_attributes>lt=[OUT]-&gt;[IN]
-sig_pulse</panel_attributes><additional_attributes>20;110;80;110;80;10;180;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>630</x><y>160</y><w>100</w><h>170</h></coordinates><panel_attributes>Delay
-T_d = 1/(4*f_d)
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>540</x><y>210</y><w>120</w><h>30</h></coordinates><panel_attributes>lt=[OUT]-&gt;[IN]</panel_attributes><additional_attributes>20;10;90;10</additional_attributes></element><element><id>Relation</id><coordinates><x>130</x><y>150</y><w>360</w><h>130</h></coordinates><panel_attributes>lt=[IN]&lt;-
-sig_pulse</panel_attributes><additional_attributes>330;110;50;110;50;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>130</x><y>150</y><w>530</w><h>170</h></coordinates><panel_attributes>lt=[TRG]&lt;-
-sig_pulse</panel_attributes><additional_attributes>500;150;50;150;50;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>710</x><y>230</y><w>90</w><h>30</h></coordinates><panel_attributes>lt=[OUT]-&gt;[]</panel_attributes><additional_attributes>20;10;70;10</additional_attributes></element><element><id>Relation</id><coordinates><x>220</x><y>180</y><w>90</w><h>50</h></coordinates><panel_attributes>lt=[Light]-(
-</panel_attributes><additional_attributes>60;20;20;20</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>0</x><y>90</y><w>120</w><h>130</h></coordinates><panel_attributes>symbol=component
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+// Welcome to UMLet!
+//
+// Double-click on elements to add them to the diagram, or to copy them
+// Edit elements by modifying the text in this panel
+// Hold Ctrl to select multiple elements
+// Use Ctrl+mouse to select via lasso
+//
+// Use +/- or Ctrl+mouse wheel to zoom
+// Drag a whole relation at its central square icon
+//
+// Press Ctrl+C to copy the whole diagram to the system clipboard (then just paste it to, eg, Word)
+// Edit the files in the "palettes" directory to create your own element palettes
+//
+// Select "Custom Elements &gt; New..." to create new element types
+//////////////////////////////////////////////////////////////////////////////////////////////
+
+
+// This text will be stored with each diagram;  use it for notes.</help_text>
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>480</x>
+      <y>70</y>
+      <w>100</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=()-[Light]
+</panel_attributes>
+    <additional_attributes>80.0;20.0;20.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>490</x>
+      <y>220</y>
+      <w>90</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=[]-&gt;[]</panel_attributes>
+    <additional_attributes>10.0;10.0;70.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>210</x>
+      <y>80</y>
+      <w>190</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>lt=[]-&gt;[]
+sig_pulse</panel_attributes>
+    <additional_attributes>10.0;110.0;70.0;110.0;70.0;10.0;170.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>650</x>
+      <y>240</y>
+      <w>100</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=[]-&gt;[]</panel_attributes>
+    <additional_attributes>10.0;10.0;80.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>230</x>
+      <y>180</y>
+      <w>350</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>lt=[]&lt;-
+sig_pulse</panel_attributes>
+    <additional_attributes>330.0;110.0;50.0;110.0;50.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>230</x>
+      <y>180</y>
+      <w>530</w>
+      <h>170</h>
+    </coordinates>
+    <panel_attributes>lt=[TRG]&lt;-
+sig_pulse</panel_attributes>
+    <additional_attributes>500.0;150.0;50.0;150.0;50.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>820</x>
+      <y>260</y>
+      <w>80</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=[]-&gt;[]</panel_attributes>
+    <additional_attributes>10.0;10.0;60.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>320</x>
+      <y>210</y>
+      <w>90</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=[Light]-(
+</panel_attributes>
+    <additional_attributes>60.0;20.0;20.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>100</x>
+      <y>120</y>
+      <w>120</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>symbol=component
 Pulse
 --
-f_pattern</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>350</y><w>530</w><h>150</h></coordinates><panel_attributes>halign=left
+f_pattern</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>100</x>
+      <y>380</y>
+      <w>560</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>halign=left
 style=wordwrap
 *Process*
 
 The Pulse component produces a digital periodic pattern sig_pulse with the frequency f_pattern. 
 
 The Sender changes sig_pulse in a analog light signal which is received by the Receiver. The Receiver convert this to a digital signal. Together with the sig_pulse the EXNOR combined both with EXNOR boolean function. This is  evaluate after a delay which is triggered by begin of each timeslot of sig_pulse.
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>280</x><y>0</y><w>120</w><h>90</h></coordinates><panel_attributes>symbol=component
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>380</x>
+      <y>30</y>
+      <w>120</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>symbol=component
 Sender
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>280</x><y>140</y><w>120</w><h>100</h></coordinates><panel_attributes>symbol=component
-Receiver</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>190</x><y>50</y><w>350</w><h>170</h></coordinates><panel_attributes>lt=&lt;..</panel_attributes><additional_attributes>50;150;10;150;10;70;330;70;330;10;280;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>780</x><y>160</y><w>100</w><h>170</h></coordinates><panel_attributes>EVAL
-
-</panel_attributes><additional_attributes></additional_attributes></element></diagram>
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>380</x>
+      <y>170</y>
+      <w>120</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>symbol=component
+Receiver</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>290</x>
+      <y>80</y>
+      <w>350</w>
+      <h>170</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;..</panel_attributes>
+    <additional_attributes>50.0;150.0;10.0;150.0;10.0;70.0;330.0;70.0;330.0;10.0;280.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>560</x>
+      <y>200</y>
+      <w>100</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>symbol=component
+EXNOR</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>730</x>
+      <y>190</y>
+      <w>100</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>symbol=component
+Delay
+T_d = 1/(4*f_d)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>880</x>
+      <y>190</y>
+      <w>100</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>symbol=component
+EVAL</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
