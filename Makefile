@@ -32,7 +32,9 @@ OBJECTS = pulse.o
 
 # Test - objects
 T_OBJ=pulse.o
+T_OBJ+=trigger.o
 T_OBJ+=t_pulse.o
+
 
 T_OBJECTS=$(addprefix $(OUT)/,$(T_OBJ))
 # Targets Definition 
@@ -56,6 +58,8 @@ $(TEST_TARGET): $(OUT) $(T_OBJECTS)
 $(OUT):
 	$(MKDIR) $(OUT)
 
+clean:
+	$(RM) -f $(T_OBJECTS) $(OBJECTS) $(TEST_TARGET)
 # Rules  
 ##############################################################################
 
