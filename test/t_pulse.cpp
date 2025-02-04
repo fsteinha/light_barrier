@@ -2,19 +2,70 @@
 #include <cassert>
 #include "pulse.hpp"
 #include "trigger.hpp"
+#include "sender.hpp"
+
+class TriggerMock : public Trigger {
+    public:
+        TriggerMock(uint16_t u16_trigger_ms) : Trigger(u16_trigger_ms) {}
+        void executeCallback() const override {
+            if (this->trg_cb) {
+                this->trg_cb();
+            }           
+        }
+
+        bool start() override {
+            this->b_running = true;
+            return true;
+        }
+
+        bool stop() override {
+            this->b_running = false;
+            return true;
+        }   
+};
+
+class Sender: public DigitalSender
+{
+private:
+    /* data */
+public:
+    Sender(): DigitalSender(){};
+    ~Sender(){};
+    bool send(bool pattern) override {
+        std::cout << pattern;
+        return true;
+    }
+};
+
+
+static void testPulse_(u_int16_t pattern, u_int8_t pattern_length, int repeat) {
+    TriggerMock *p_trigger = new TriggerMock(1);
+    Sender *p_sender = new Sender();
+
+    Pulse *pulse = new Pulse(pattern, p_trigger, p_sender, pattern_length);
+    assert(pulse->getPattern() == pattern);
+
+    for (int i = 0; i < repeat; i++) {
+        p_trigger->executeCallback();
+    }
+    std::cout << std::endl;
+    
+    delete p_trigger;
+    delete p_sender;
+    delete pulse;
+}
 
 // Unit Test Funktion
 void testPulse() {
     // Testfälle
-    Trigger trigger = Trigger(1);
-    Pulse p1(0xAAAA, 100, &trigger, 16);
-    assert(p1.getPattern() == 0xAAAA);
-    assert(p1.getTPuls() == 100);
+    TriggerMock trigger = TriggerMock(1);
+    Sender sender = Sender();
 
-    Pulse p2(0x5555, 200, &trigger, 16);
-    assert(p2.getPattern() == 0x5555);
-    assert(p2.getTPuls() == 200);
+    testPulse_(0xAAAA, 16, 32);
+    testPulse_(0x5555, 16, 32);
+    testPulse_(0x8000, 2, 16);
 
+    
     std::cout << "Alle Tests bestanden!" << std::endl;
 }
 
