@@ -2,7 +2,7 @@
 #include <cassert>
 #include "pulse.hpp"
 #include "trigger.hpp"
-#include "sender.hpp"
+#include "digital_sender.hpp"
 
 class TriggerMock : public Trigger {
     public:

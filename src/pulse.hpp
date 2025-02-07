@@ -2,7 +2,7 @@
 #define PULSE_DEF
 #include <cstdint>
 #include "trigger.hpp"
-#include "sender.hpp"
+#include "digital_sender.hpp"
 
 /*!
     @brief: Class to send a pattern
@@ -13,9 +13,9 @@ class Pulse {
         uint8_t  g_u8_pattern_length;
         u_int8_t g_u8_pattern_idx;
         //@brief: Pointer to Trigger object
-        Trigger *g_p_trigger; 
+        Trigger *g_p_trigger = nullptr; 
         //@brief: Pointer to DigitalSender object
-        DigitalSender *g_p_sender;
+        DigitalSender *g_p_sender = nullptr;
         static constexpr uint16_t PATTERN_MASK_INIT = 0x8000;
         
 
