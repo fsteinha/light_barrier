@@ -1,8 +1,8 @@
 #include <iostream>
 #include <cassert>
-#include "pulse.hpp"
-#include "trigger.hpp"
-#include "digital_sender.hpp"
+#include "Pulse.hpp"
+#include "Trigger.hpp"
+#include "DigitalSender.hpp"
 
 class TriggerMock : public Trigger {
     public:

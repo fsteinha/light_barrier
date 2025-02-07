@@ -28,11 +28,11 @@ VPATH=$(INCLUDE)
 ##############################################################################
 
 # OBJECTS
-OBJECTS = pulse.o
+OBJECTS = Pulse.o
 
 # Test - objects
-T_OBJ=pulse.o
-T_OBJ+=trigger.o
+T_OBJ=Pulse.o
+T_OBJ+=Trigger.o
 T_OBJ+=t_pulse.o
 
 

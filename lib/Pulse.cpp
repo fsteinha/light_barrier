@@ -1,5 +1,5 @@
-#include "pulse.hpp"
-#include "digital_sender.hpp"
+#include "Pulse.hpp"
+#include "DigitalSender.hpp"
 
 /*!
     @brief: Constructor of Pulse

@@ -1,4 +1,4 @@
-#include "trigger.hpp"
+#include "Trigger.hpp"
 
 /*!
     @brief: Set the send callback function

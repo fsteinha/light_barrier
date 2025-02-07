@@ -1,8 +1,8 @@
 #ifndef PULSE_DEF
 #define PULSE_DEF
 #include <cstdint>
-#include "trigger.hpp"
-#include "digital_sender.hpp"
+#include "Trigger.hpp"
+#include "DigitalSender.hpp"
 
 /*!
     @brief: Class to send a pattern
