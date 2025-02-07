@@ -21,6 +21,7 @@ class Trigger {
         //@brief: Constructor
         Trigger(uint16_t u16_tigger_ms) :
                 u16_trigger_ms(u16_tigger_ms) {}
+        virtual ~Trigger() = default;
 
         //@brief: Set the send callback function
         void setCallback(std::function<void()> trg_cb);

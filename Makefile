@@ -16,7 +16,7 @@ CXXFLAGS = -Wall -Wextra -std=c++17 $(INCLUDE_FLAG)
 ##############################################################################
 
 # Includes 
-INCLUDE=./src
+INCLUDE=./lib
 INCLUDE+=./test
 INCLUDE_FLAG=$(addprefix -I,$(INCLUDE))
 

@@ -10,12 +10,12 @@
 class Pulse {
     private:
         uint16_t g_u16_pattern;
-        uint8_t  g_u8_pattern_length;
-        u_int8_t g_u8_pattern_idx;
         //@brief: Pointer to Trigger object
         Trigger *g_p_trigger = nullptr; 
         //@brief: Pointer to DigitalSender object
         DigitalSender *g_p_sender = nullptr;
+        uint8_t  g_u8_pattern_length;
+        u_int8_t g_u8_pattern_idx;
         static constexpr uint16_t PATTERN_MASK_INIT = 0x8000;
         
 

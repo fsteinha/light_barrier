@@ -12,12 +12,13 @@
 Pulse::Pulse(uint16_t u16_pattern, 
              Trigger * p_trigger,
              DigitalSender *p_sender,
-             uint8_t u8_pattern_length=8): 
+             uint8_t u8_pattern_length): 
             g_u16_pattern(u16_pattern), 
             g_p_trigger(p_trigger),
+            g_p_sender(p_sender),
             g_u8_pattern_length(u8_pattern_length),
-            g_u8_pattern_idx(0),
-            g_p_sender(p_sender){
+            g_u8_pattern_idx(0)
+            {
                 this->g_p_trigger->setCallback([this]() { this->doSend();});
              }
 
