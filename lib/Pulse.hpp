@@ -20,6 +20,7 @@ class Pulse {
         
 
     public:
+        Pulse() = default;
         //@brief: Constructor
         Pulse(uint16_t u16_pattern, 
               Trigger * p_trigger,
