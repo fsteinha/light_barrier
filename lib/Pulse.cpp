@@ -19,7 +19,7 @@ Pulse::Pulse(uint16_t u16_pattern,
             g_u8_pattern_length(u8_pattern_length),
             g_u8_pattern_idx(0)
             {
-                this->g_p_trigger->setCallback([this]() { this->doSend();});
+                this->g_p_trigger->addCallback([this]() { this->doSend();});
              }
 
 /*!

@@ -1,15 +1,6 @@
 #include "Trigger.hpp"
 
 /*!
-    @brief: Set the send callback function
-    @param trg_cb: callback function
-    @return: void
-*/
-void Trigger::setCallback(std::function<void()> trg_cb) {
-    this->trg_cb = trg_cb;
-}
-
-/*!
     @brief: Getter method for trigger
     @return: uint16_t
 */
@@ -22,4 +13,20 @@ uint16_t Trigger::getTrigger() const {
 */
 bool Trigger::isRunning() const {
     return this->b_running;
+}
+
+int Trigger::addCallback(std::function<void()> callback) {
+    int id = nextCallbackId++;
+    callbacks[id] = callback;
+    return id;
+}
+
+void Trigger::removeCallback(int callbackId) {
+    callbacks.erase(callbackId);
+}
+
+void Trigger::executeCallbacks() const {
+    for (const auto& pair : callbacks) {
+        pair.second();
+    }
 }

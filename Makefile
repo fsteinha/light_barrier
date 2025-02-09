@@ -29,11 +29,16 @@ VPATH=$(INCLUDE)
 
 # OBJECTS
 OBJECTS = Pulse.o
+OBJECTS+= Trigger.o
+OBJECTS+= LightBarrier.o
+
 
 # Test - objects
 T_OBJ=Pulse.o
 T_OBJ+=Trigger.o
+T_OBJ+=LightBarrier.o
 T_OBJ+=t_pulse.o
+T_OBJ+=t_light_barrier.o
 
 
 T_OBJECTS=$(addprefix $(OUT)/,$(T_OBJ))
@@ -42,6 +47,7 @@ T_OBJECTS=$(addprefix $(OUT)/,$(T_OBJ))
 
 # test targets
 TEST_TARGET = test_pulse 
+TEST_TARGET += test_light_barrier 
 
 
 # Targets  
