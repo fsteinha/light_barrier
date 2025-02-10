@@ -36,9 +36,14 @@ OBJECTS+= LightBarrier.o
 # Test - objects
 T_OBJ=Pulse.o
 T_OBJ+=Trigger.o
-T_OBJ+=LightBarrier.o
-T_OBJ+=t_pulse.o
-T_OBJ+=t_light_barrier.o
+
+T_OBJ_PULSE = $(T_OBJ)
+T_OBJ_PULSE+=t_pulse.o
+
+
+T_OBJ_LB = $(T_OBJ)
+T_OBJ_LB +=LightBarrier.o
+T_OBJ_LB +=t_light_barrier.o
 
 
 T_OBJECTS=$(addprefix $(OUT)/,$(T_OBJ))
@@ -57,9 +62,15 @@ all: $(TEST_TARGET)
 
 # Rule to build all test targets
 .PHONY: $(OUT) $(TEST_TARGET)
-$(TEST_TARGET): $(OUT) $(T_OBJECTS)
-	$(CXX) $(CXXFLAGS) -o $(OUT)/$@ $(T_OBJECTS)
+
+test_pulse: $(OUT) $(T_OBJ_PULSE)
+	$(CXX) $(CXXFLAGS) -o $(OUT)/$@ $(T_OBJ_PULSE)
 	$(OUT)/$@
+
+test_light_barrier: $(OUT) $(T_OBJ_LB)
+	$(CXX) $(CXXFLAGS) -o $(OUT)/$@ $(T_OBJ_LB)
+	$(OUT)/$@
+
 
 $(OUT):
 	$(MKDIR) $(OUT)

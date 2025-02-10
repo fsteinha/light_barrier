@@ -9,8 +9,8 @@ class TriggerArduino() : public Trigger
 private:
     hw_timer_t *esp32_timer = NULL;
 public:
-    trigger_arduino(uint16_t u16_trigger_ms) : Trigger(u16_trigger_ms) {};
-    ~trigger_arduino() {}
+    TriggerArduino(uint16_t u16_trigger_ms) : Trigger(u16_trigger_ms) {};
+    ~TriggerArduino() {}
 };
 
 #endif
