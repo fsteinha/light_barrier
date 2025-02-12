@@ -3,19 +3,26 @@
 #include "LightBarrier.hpp"
 #include "TriggerMock.hpp"
 #include "TestSender.hpp"
+#include "DigitalReceiver.hpp"
 
 static void testLightBarrier_(u_int16_t pattern, u_int8_t pattern_length, int repeat) {
-    TriggerMock *p_trigger = new TriggerMock(1);
+    TriggerMock *p_trigger_sender = new TriggerMock(1);
     TestSender *p_sender = new TestSender();
+    DigitalReceiver *p_receiver = new DigitalReceiver();
 
-    LightBarrier *p_light_barrier = new LightBarrier(pattern, pattern_length, p_trigger, p_sender);
+    LightBarrier *p_light_barrier = new LightBarrier(pattern, 
+                                                    pattern_length, 
+                                                    p_trigger_sender, 
+                                                    p_sender,
+                                                    nullptr, 
+                                                    p_receiver);
     
     for (int i = 0; i < repeat; i++) {
-        p_trigger->executeCallbacks();
+        p_trigger_sender->executeCallbacks();
     }
     std::cout << std::endl;
     
-    delete p_trigger;
+    delete p_trigger_sender;
     delete p_sender;
     delete p_light_barrier;
 }

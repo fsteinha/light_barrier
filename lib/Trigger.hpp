@@ -13,7 +13,7 @@
 class Trigger {
     private:
     protected:
-        uint16_t u16_trigger_ms;
+        uint16_t u16_trigger_ms = 0;
         std::map<int, std::function<void()>> callbacks; // Callback functions with unique IDs
     
         bool b_running = false;
@@ -24,6 +24,7 @@ class Trigger {
         void executeCallbacks() const;
     
     public:
+        Trigger() = default;
         //@brief: Constructor
         Trigger(uint16_t u16_trigger_ms) :
                 u16_trigger_ms(u16_trigger_ms) {}

@@ -36,7 +36,7 @@ uint16_t Pulse::getPattern() const{
     @return: void
 */
 void Pulse::doSend(){
-    uint8_t u8_send;
+    bool b_send;
     uint16_t u16_mask;
 
     if (this->g_u8_pattern_idx >= this->g_u8_pattern_length){
@@ -44,6 +44,19 @@ void Pulse::doSend(){
     }
     u16_mask = this->PATTERN_MASK_INIT >> this->g_u8_pattern_idx;
     this->g_u8_pattern_idx++;
-    u8_send = ((u16_mask & this->g_u16_pattern) > 0);
-    this->g_p_sender->send(u8_send);
+    b_send = ((u16_mask & this->g_u16_pattern) > 0);
+    this->g_p_sender->send(b_send);
+    if (b_send == true){
+        this->g_send_bit = SendBit::HIGH;
+    } else {
+        this->g_send_bit = SendBit::LOW;
+    }
+}
+
+/*!
+    @brief: Getter method for send bit
+    @return: SendBit
+*/
+SendBit Pulse::getSendBit() const{
+    return this->g_send_bit;
 }
