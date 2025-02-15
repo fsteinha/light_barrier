@@ -47,9 +47,9 @@ void Pulse::doSend(){
     b_send = ((u16_mask & this->g_u16_pattern) > 0);
     this->g_p_sender->send(b_send);
     if (b_send == true){
-        this->g_send_bit = SendBit::HIGH;
+        this->g_send_bit = BitStatus::HIGH;
     } else {
-        this->g_send_bit = SendBit::LOW;
+        this->g_send_bit = BitStatus::LOW;
     }
 }
 
@@ -57,6 +57,6 @@ void Pulse::doSend(){
     @brief: Getter method for send bit
     @return: SendBit
 */
-SendBit Pulse::getSendBit() const{
+BitStatus Pulse::getSendBit() const{
     return this->g_send_bit;
 }

@@ -3,7 +3,7 @@
 #include <cstdint>
 #include "Trigger.hpp"
 #include "DigitalSender.hpp"
-#include "SendBit.hpp"
+#include "BitStatus.hpp"
 
 /*!
     @brief: Class to send a pattern
@@ -18,7 +18,7 @@ class Pulse {
         uint8_t  g_u8_pattern_length;
         u_int8_t g_u8_pattern_idx;
         static constexpr uint16_t PATTERN_MASK_INIT = 0x8000;
-        SendBit g_send_bit = SendBit::UNDEF;
+        BitStatus g_send_bit = BitStatus::UNDEF;
 
     public:
         Pulse() = default;
@@ -35,7 +35,7 @@ class Pulse {
         uint16_t getPattern() const;
 
         //@brief: Getter method for send bit
-        SendBit getSendBit() const; 
+        BitStatus getSendBit() const; 
 
 };
 #endif

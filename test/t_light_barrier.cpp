@@ -16,6 +16,8 @@ static void testLightBarrier_(u_int16_t pattern, u_int8_t pattern_length, int re
                                                     p_sender,
                                                     nullptr, 
                                                     p_receiver);
+
+    assert(p_light_barrier->getState() == LightBarrierState::INIT);
     
     for (int i = 0; i < repeat; i++) {
         p_trigger_sender->executeCallbacks();

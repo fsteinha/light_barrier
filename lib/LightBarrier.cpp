@@ -28,8 +28,8 @@ LightBarrier::LightBarrier(u_int16_t u16_pulse_time_ms,
 
     if (g_p_receiver == nullptr) 
     {
-        this->g_reiver.emplace(DigitalReceiver(this->g_p_trigger_receiver));
-        this->g_p_receiver = &this->g_reiver.value();
+        this->g_receiver.emplace(DigitalReceiver(this->g_p_trigger_receiver));
+        this->g_p_receiver = &this->g_receiver.value();
     }
     
     if (this->g_state != LightBarrierState::ERROR)
@@ -38,32 +38,36 @@ LightBarrier::LightBarrier(u_int16_t u16_pulse_time_ms,
     }
 }
 
-void LightBarrier::start()
-{
+void LightBarrier::start(){
     g_p_trigger_sender->start();
+
 }
 
-void LightBarrier::stop()
-{
+void LightBarrier::stop(){
     g_p_trigger_sender->stop();
 }
 
-int LightBarrier::addCallback(std::function<void(bool)> callback)
-{
+void LightBarrier::checkReceiver(){
+    BitStatus rcv_bit = g_p_receiver->getBit();
+    
+}
+
+int LightBarrier::addCallback(std::function<void(bool)> callback){
     int id = nextCallbackId++;
     callbacks[id] = callback;
     return id;
 }
 
-void LightBarrier::removeCallback(int callbackId)
-{
+void LightBarrier::removeCallback(int callbackId){
     callbacks.erase(callbackId);
 }
 
-void LightBarrier::executeCallback(bool state) const
-{
+void LightBarrier::executeCallback(bool state) const{
     for (const auto& pair : callbacks) {
         pair.second(state);
     }    
 }
 
+LightBarrierState LightBarrier::getState() const {
+     return g_state; 
+}

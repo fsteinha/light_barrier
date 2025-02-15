@@ -3,7 +3,7 @@
 
 #include <cstdint>
 #include "Trigger.hpp"
-#include "SendBit.hpp"
+#include "BitStatus.hpp"
 
 /*!
     @brief: Class to receive a pattern
@@ -11,7 +11,7 @@
 class DigitalReceiver {
     private:
         Trigger *g_p_trigger = nullptr;
-        SendBit rcv_bit = SendBit::UNDEF;
+        BitStatus rcv_bit = BitStatus::UNDEF;
         std::map<int, std::function<void()>> callbacks; // Callback functions with unique IDs
     
         int nextCallbackId = 0;
@@ -25,6 +25,7 @@ class DigitalReceiver {
         //@brief: Constructor
         DigitalReceiver(Trigger * p_trigger) : g_p_trigger(p_trigger) {}
 
+        virtual BitStatus getBit() const = 0;
 
         //@brief: Add a send callback function
         int addCallback(std::function<void()> callback);

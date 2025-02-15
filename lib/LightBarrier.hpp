@@ -43,7 +43,7 @@ private:
     Trigger *g_p_trigger_receiver = nullptr;
     std::optional<LightBarrierRcvTrigger> g_trigger_receiver;
     DigitalReceiver *g_p_receiver = nullptr;
-    std::optional<DigitalReceiver> g_reiver; 
+    std::optional<DigitalReceiver> g_receiver; 
 
     Pulse g_pulse;
     std::map<int, std::function<void(bool)>> callbacks; // Callback functions with unique IDs
@@ -51,7 +51,7 @@ private:
     LightBarrierState g_state = LightBarrierState::NO_INIT;
 
     void executeCallback(bool state) const;
-
+    void checkReceiver();
 public:
     LightBarrier(u_int16_t u16_pulse_time_ms, 
                     u_int8_t u8_pattern_length,
@@ -63,7 +63,7 @@ public:
     void stop();    
     int addCallback(std::function<void(bool)> callback);
     void removeCallback(int callbackId);
- 
+    LightBarrierState getState() const;
     ~LightBarrier(){};
 };
 
