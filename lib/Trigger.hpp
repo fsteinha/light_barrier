@@ -6,6 +6,8 @@
 #include <algorithm>
 #include <vector>
 
+#include "CallbackManager.hpp"
+
 
 /*!
     @brief: Class to trigger a function
@@ -14,15 +16,11 @@ class Trigger {
     private:
     protected:
         uint16_t u16_trigger_ms = 0;
-        std::map<int, std::function<void()>> callbacks; // Callback functions with unique IDs
-    
+        CallbackManager callbackManager;
         bool b_running = false;
-        int nextCallbackId = 0;
 
-    protected:
-        //@brief: Execute the callback function
-        void executeCallbacks() const;
-    
+        void executeCallbacks(void) const ;
+
     public:
         Trigger() = default;
         //@brief: Constructor
@@ -31,10 +29,14 @@ class Trigger {
         virtual ~Trigger() = default;
 
         //@brief: Add a send callback function
-        int addCallback(std::function<void()> callback);
+        int addCallback(std::function<void()> callback) {
+            return callbackManager.addCallback(callback);
+        };
         
         //@brief: Remove a send callback function
-        void removeCallback(int callbackId);
+        void removeCallback(int callbackId) {
+            callbackManager.removeCallback(callbackId);
+        };
 
         //@brief: Start the trigger
         virtual bool start() = 0;

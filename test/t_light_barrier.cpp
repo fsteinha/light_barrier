@@ -3,12 +3,12 @@
 #include "LightBarrier.hpp"
 #include "TriggerMock.hpp"
 #include "TestSender.hpp"
-#include "DigitalReceiver.hpp"
+#include "TestReceiver.hpp"
 
 static void testLightBarrier_(u_int16_t pattern, u_int8_t pattern_length, int repeat) {
     TriggerMock *p_trigger_sender = new TriggerMock(1);
     TestSender *p_sender = new TestSender();
-    DigitalReceiver *p_receiver = new DigitalReceiver();
+    DigitalReceiver *p_receiver = new TestReceiver();
 
     LightBarrier *p_light_barrier = new LightBarrier(pattern, 
                                                     pattern_length, 

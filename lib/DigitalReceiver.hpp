@@ -25,7 +25,9 @@ class DigitalReceiver {
         //@brief: Constructor
         DigitalReceiver(Trigger * p_trigger) : g_p_trigger(p_trigger) {}
 
-        virtual BitStatus getBit() const = 0;
+        BitStatus getBit() const {
+            return this->rcv_bit;
+        }
 
         //@brief: Add a send callback function
         int addCallback(std::function<void()> callback);

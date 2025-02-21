@@ -15,18 +15,6 @@ bool Trigger::isRunning() const {
     return this->b_running;
 }
 
-int Trigger::addCallback(std::function<void()> callback) {
-    int id = nextCallbackId++;
-    callbacks[id] = callback;
-    return id;
-}
-
-void Trigger::removeCallback(int callbackId) {
-    callbacks.erase(callbackId);
-}
-
-void Trigger::executeCallbacks() const {
-    for (const auto& pair : callbacks) {
-        pair.second();
-    }
-}
+void Trigger::executeCallbacks(void) const {
+    this->callbackManager.executeCallbacks();
+}   

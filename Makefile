@@ -31,11 +31,13 @@ VPATH=$(INCLUDE)
 OBJECTS = Pulse.o
 OBJECTS+= Trigger.o
 OBJECTS+= LightBarrier.o
+OBJECTS+= CallbackManager.o
 
 
 # Test - objects
 T_OBJ=Pulse.o
 T_OBJ+=Trigger.o
+T_OBJ+=CallbackManager.o
 
 T_OBJ_PULSE = $(T_OBJ)
 T_OBJ_PULSE+=t_pulse.o
