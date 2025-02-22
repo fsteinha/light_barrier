@@ -19,7 +19,7 @@ class Trigger {
         CallbackManager callbackManager;
         bool b_running = false;
 
-        void executeCallbacks(void) const ;
+        void executeCallbacks(void) const;
 
     public:
         Trigger() = default;
@@ -45,9 +45,13 @@ class Trigger {
         virtual bool stop() = 0;
 
         //@brief: Check if the trigger is running
-        bool isRunning() const;
+        bool isRunning() const {
+            return this->b_running;
+        }
          
         // Getter methods
-        uint16_t getTrigger() const; 
+        uint16_t getTrigger() const {
+            return this->u16_trigger_ms;
+        }
 };
 #endif

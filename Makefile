@@ -10,7 +10,7 @@ CXX=g++
 MKDIR=mkdir -p 
 
 # Compiler Flags
-CXXFLAGS = -Wall -Wextra -std=c++17 $(INCLUDE_FLAG)
+CXXFLAGS = -Wall -Wextra -std=c++17 -g $(INCLUDE_FLAG)
 
 # Paths 
 ##############################################################################
@@ -30,6 +30,7 @@ VPATH=$(INCLUDE)
 # OBJECTS
 OBJECTS = Pulse.o
 OBJECTS+= Trigger.o
+OBJECTS+= CallbackManager.o
 OBJECTS+= LightBarrier.o
 OBJECTS+= CallbackManager.o
 

@@ -15,6 +15,7 @@ class TriggerMock : public Trigger {
         }
 
         void executeCallbacks() {
+            
             Trigger::executeCallbacks();
         }   
 };

@@ -32,9 +32,6 @@ static void testLightBarrier_(u_int16_t pattern, u_int8_t pattern_length, int re
 // Unit Test Funktion
 void testLightBarrier() {
     // Testfälle
-    TriggerMock trigger = TriggerMock(1);
-    TestSender sender = TestSender();
-
     testLightBarrier_(0xAAAA, 16, 32);
     testLightBarrier_(0x5555, 16, 32);
     testLightBarrier_(0x8000, 2, 16);

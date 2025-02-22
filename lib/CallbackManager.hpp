@@ -1,3 +1,5 @@
+#ifndef CALLBACKMANAGER_HPP
+#define CALLBACKMANAGER_HPP
 #include <functional>
 #include <map>
 
@@ -24,3 +26,4 @@ public:
 
 };
 
+#endif

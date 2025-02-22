@@ -4,6 +4,7 @@
 #include <cstdint>
 #include "Trigger.hpp"
 #include "BitStatus.hpp"
+#include "CallbackManager.hpp"
 
 /*!
     @brief: Class to receive a pattern
@@ -12,13 +13,12 @@ class DigitalReceiver {
     private:
         Trigger *g_p_trigger = nullptr;
         BitStatus rcv_bit = BitStatus::UNDEF;
-        std::map<int, std::function<void()>> callbacks; // Callback functions with unique IDs
-    
-        int nextCallbackId = 0;
+        CallbackManager callbackManager;
 
-    protected:
         //@brief: Execute the callback function
-        void executeCallbacks() const;
+        void executeCallbacks(void) const {
+            this->callbackManager.executeCallbacks();
+        }
 
     public:
         DigitalReceiver() = default;
@@ -30,11 +30,14 @@ class DigitalReceiver {
         }
 
         //@brief: Add a send callback function
-        int addCallback(std::function<void()> callback);
+        int addCallback(std::function<void()> callback) {
+            return callbackManager.addCallback(callback);
+        };
         
         //@brief: Remove a send callback function
-        void removeCallback(int callbackId);
-
+        void removeCallback(int callbackId) {
+            callbackManager.removeCallback(callbackId);
+        };        
 };
 
 #endif
