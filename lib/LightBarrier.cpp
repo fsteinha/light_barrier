@@ -1,3 +1,4 @@
+#include <iostream>
 #include "LightBarrier.hpp"
 
 LightBarrier::LightBarrier(u_int16_t u16_pulse_time_ms,
@@ -32,6 +33,8 @@ LightBarrier::LightBarrier(u_int16_t u16_pulse_time_ms,
         this->g_p_receiver = &this->g_receiver.value();
     }
     
+    g_p_receiver->addCallback([this](void) {this->checkReceiver();});
+
     if (this->g_state != LightBarrierState::ERROR)
     {
         this->g_state = LightBarrierState::INIT;
@@ -49,23 +52,12 @@ void LightBarrier::stop(){
 
 void LightBarrier::checkReceiver(){
     BitStatus rcv_bit = g_p_receiver->getBit();
-    
+    BitStatus last_send = g_pulse.getSendBit();
+    std::cout << "Received: " << rcv_bit.toString() << " Expected: " << last_send.toString() << std::endl;
 }
 
-int LightBarrier::addCallback(std::function<void(bool)> callback){
-    int id = nextCallbackId++;
-    callbacks[id] = callback;
-    return id;
-}
-
-void LightBarrier::removeCallback(int callbackId){
-    callbacks.erase(callbackId);
-}
-
-void LightBarrier::executeCallback(bool state) const{
-    for (const auto& pair : callbacks) {
-        pair.second(state);
-    }    
+void LightBarrier::executeCallback() const{
+    this->callbackManager.executeCallbacks();
 }
 
 LightBarrierState LightBarrier::getState() const {

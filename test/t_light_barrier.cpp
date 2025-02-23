@@ -8,7 +8,7 @@
 static void testLightBarrier_(u_int16_t pattern, u_int8_t pattern_length, int repeat) {
     TriggerMock *p_trigger_sender = new TriggerMock(1);
     TestSender *p_sender = new TestSender();
-    DigitalReceiver *p_receiver = new TestReceiver();
+    TestReceiver *p_receiver = new TestReceiver();
 
     LightBarrier *p_light_barrier = new LightBarrier(pattern, 
                                                     pattern_length, 
@@ -21,6 +21,9 @@ static void testLightBarrier_(u_int16_t pattern, u_int8_t pattern_length, int re
     
     for (int i = 0; i < repeat; i++) {
         p_trigger_sender->executeCallbacks();
+        p_receiver->setBit(0);
+        p_receiver->receive();
+        p_receiver->executeCallbacks();
     }
     std::cout << std::endl;
     
@@ -29,7 +32,7 @@ static void testLightBarrier_(u_int16_t pattern, u_int8_t pattern_length, int re
     delete p_light_barrier;
 }
 
-// Unit Test Funktion
+// Unit Test Function
 void testLightBarrier() {
     // Testfälle
     testLightBarrier_(0xAAAA, 16, 32);

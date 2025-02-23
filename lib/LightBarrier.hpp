@@ -9,10 +9,37 @@
 #include "Pulse.hpp"
 #include "DigitalSender.hpp"
 #include "DigitalReceiver.hpp"
+#include "CallbackManager.hpp"
 
-enum class LightBarrierState
-{
-    NO_INIT, INIT, RUNNING, STOPPED, ERROR
+class LightBarrierState {
+    public:
+        enum Value {
+            NO_INIT, INIT, RUNNING, STOPPED, ERROR
+        };
+    
+        LightBarrierState(Value value = NO_INIT) : value_(value) {}
+    
+        operator Value() const { return value_; }
+    
+        std::string toString() const {
+            switch (value_) {
+                case NO_INIT:
+                    return "NO_INIT";
+                case INIT:
+                    return "INIT";
+                case RUNNING:
+                    return "RUNNING";
+                case STOPPED:
+                    return "STOPPED";
+                case ERROR:
+                    return "ERROR";
+                default:
+                    return "UNKNOWN";
+            }
+        }
+    
+    private:
+        Value value_;
 };
 
 class LightBarrierRcvTrigger: public Trigger
@@ -46,11 +73,11 @@ private:
     std::optional<DigitalReceiver> g_receiver; 
 
     Pulse g_pulse;
-    std::map<int, std::function<void(bool)>> callbacks; // Callback functions with unique IDs
+    CallbackManager callbackManager;
     int nextCallbackId = 0;
     LightBarrierState g_state = LightBarrierState::NO_INIT;
 
-    void executeCallback(bool state) const;
+    void executeCallback() const;
     void checkReceiver();
 public:
     LightBarrier(u_int16_t u16_pulse_time_ms, 
@@ -61,8 +88,15 @@ public:
                     DigitalReceiver *p_receiver);
     void start();
     void stop();    
-    int addCallback(std::function<void(bool)> callback);
-    void removeCallback(int callbackId);
+    //@brief: Add a send callback function
+    int addCallback(std::function<void()> callback) {
+        return callbackManager.addCallback(callback);
+    };
+    
+    //@brief: Remove a send callback function
+    void removeCallback(int callbackId) {
+        callbackManager.removeCallback(callbackId);
+    };
     LightBarrierState getState() const;
     ~LightBarrier(){};
 };

@@ -10,15 +10,13 @@
     @brief: Class to receive a pattern
 */
 class DigitalReceiver {
-    private:
+    protected:
         Trigger *g_p_trigger = nullptr;
         BitStatus rcv_bit = BitStatus::UNDEF;
+    
         CallbackManager callbackManager;
-
         //@brief: Execute the callback function
-        void executeCallbacks(void) const {
-            this->callbackManager.executeCallbacks();
-        }
+        void executeCallbacks(void) const;
 
     public:
         DigitalReceiver() = default;
@@ -28,6 +26,8 @@ class DigitalReceiver {
         BitStatus getBit() const {
             return this->rcv_bit;
         }
+
+        virtual void receive(){};
 
         //@brief: Add a send callback function
         int addCallback(std::function<void()> callback) {
