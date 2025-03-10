@@ -42,6 +42,35 @@ class LightBarrierState {
         Value value_;
 };
 
+class LightBarrierResult {
+    public:
+        enum Value {
+            NONE, FREE, BLOCKED, NOISE
+        };
+    
+        LightBarrierResult(Value value = NONE) : value_(value) {}
+    
+        operator Value() const { return value_; }
+    
+        std::string toString() const {
+            switch (value_) {
+                case NONE:
+                    return "NONE";
+                case FREE:
+                    return "FREE";
+                case BLOCKED:
+                    return "BLOCKED";
+                case NOISE:
+                    return "NOISE";
+                default:
+                    return "UNKNOWN";
+            }
+        }
+    
+    private:
+        Value value_;
+};
+
 class LightBarrierRcvTrigger: public Trigger
 {
 public:
@@ -76,6 +105,7 @@ private:
     CallbackManager callbackManager;
     int nextCallbackId = 0;
     LightBarrierState g_state = LightBarrierState::NO_INIT;
+    LightBarrierResult g_result = LightBarrierResult::NONE;
 
     void executeCallback() const;
     void checkReceiver();

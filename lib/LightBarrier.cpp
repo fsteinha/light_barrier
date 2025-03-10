@@ -43,17 +43,41 @@ LightBarrier::LightBarrier(u_int16_t u16_pulse_time_ms,
 
 void LightBarrier::start(){
     g_p_trigger_sender->start();
+    this->g_state = LightBarrierState::RUNNING;
 
 }
 
 void LightBarrier::stop(){
     g_p_trigger_sender->stop();
+    this->g_state = LightBarrierState::STOPPED;
 }
 
 void LightBarrier::checkReceiver(){
     BitStatus rcv_bit = g_p_receiver->getBit();
     BitStatus last_send = g_pulse.getSendBit();
-    std::cout << "Received: " << rcv_bit.toString() << " Expected: " << last_send.toString() << std::endl;
+
+    if ((rcv_bit == BitStatus::UNDEF) || (last_send == BitStatus::UNDEF))
+    {
+        this->g_result = LightBarrierResult::NONE;
+    }
+    else if (rcv_bit == last_send)
+    {
+        this->g_result = LightBarrierResult::FREE;
+    }
+    else if (rcv_bit != last_send)
+    {
+        this->g_result = LightBarrierResult::BLOCKED;
+    }
+    else if ((last_send == BitStatus::LOW) && (rcv_bit == BitStatus::HIGH))
+    {
+        this->g_result = LightBarrierResult::NOISE;
+    }
+    else
+    {
+        this->g_result = LightBarrierResult::NONE;
+    }
+
+    std::cout << "Result: " << this->g_result.toString() << "Received: " << rcv_bit.toString() << " Expected: " << last_send.toString() << std::endl;
 }
 
 void LightBarrier::executeCallback() const{
